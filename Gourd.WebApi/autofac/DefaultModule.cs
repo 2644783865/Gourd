@@ -36,7 +36,7 @@ namespace Gourd.WebApi.autofac
 
 
 
-            //根据名称约定（仓储层的接口和实现均以Repository结尾），实现服务接口和服务实现的依赖
+            //根据名称约定，实现领域
             builder.RegisterAssemblyTypes(Domain, DomainCore)
               .Where(t => t.Name.EndsWith("Repository"))
               .AsImplementedInterfaces().InstancePerLifetimeScope();
