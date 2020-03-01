@@ -1,0 +1,11 @@
+F:\core\Gourd\Gourd.Domain\bin\Debug\netcoreapp3.1\Gourd.Domain.deps.json
+F:\core\Gourd\Gourd.Domain\bin\Debug\netcoreapp3.1\Gourd.Domain.dll
+F:\core\Gourd\Gourd.Domain\bin\Debug\netcoreapp3.1\Gourd.Domain.pdb
+F:\core\Gourd\Gourd.Domain\bin\Debug\netcoreapp3.1\Gourd.Infrastructure.dll
+F:\core\Gourd\Gourd.Domain\bin\Debug\netcoreapp3.1\Gourd.Infrastructure.pdb
+F:\core\Gourd\Gourd.Domain\obj\Debug\netcoreapp3.1\Gourd.Domain.csprojAssemblyReference.cache
+F:\core\Gourd\Gourd.Domain\obj\Debug\netcoreapp3.1\Gourd.Domain.AssemblyInfoInputs.cache
+F:\core\Gourd\Gourd.Domain\obj\Debug\netcoreapp3.1\Gourd.Domain.AssemblyInfo.cs
+F:\core\Gourd\Gourd.Domain\obj\Debug\netcoreapp3.1\Gourd.Domain.csproj.CopyComplete
+F:\core\Gourd\Gourd.Domain\obj\Debug\netcoreapp3.1\Gourd.Domain.dll
+F:\core\Gourd\Gourd.Domain\obj\Debug\netcoreapp3.1\Gourd.Domain.pdb

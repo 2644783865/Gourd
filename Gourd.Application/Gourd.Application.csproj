@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gourd.DomainCore\Gourd.DomainCore.csproj" />
+    <ProjectReference Include="..\Gourd.Domain\Gourd.Domain.csproj" />
+    <ProjectReference Include="..\Gourd.Infrastructure\Gourd.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="IService\Channel\" />
+    <Folder Include="IService\Platform\" />
+    <Folder Include="Service\Channel\" />
+    <Folder Include="Service\Platform\" />
+    <Folder Include="ViewModel\Channel\" />
+    <Folder Include="ViewModel\Platform\" />
+  </ItemGroup>
+
+</Project>

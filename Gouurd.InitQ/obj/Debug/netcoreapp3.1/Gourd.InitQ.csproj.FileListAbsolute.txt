@@ -1,0 +1,8 @@
+F:\core\Gourd\Gouurd.InitQ\bin\Debug\netcoreapp3.1\Gourd.InitQ.deps.json
+F:\core\Gourd\Gouurd.InitQ\bin\Debug\netcoreapp3.1\Gourd.InitQ.dll
+F:\core\Gourd\Gouurd.InitQ\bin\Debug\netcoreapp3.1\Gourd.InitQ.pdb
+F:\core\Gourd\Gouurd.InitQ\obj\Debug\netcoreapp3.1\Gourd.InitQ.csprojAssemblyReference.cache
+F:\core\Gourd\Gouurd.InitQ\obj\Debug\netcoreapp3.1\Gourd.InitQ.AssemblyInfoInputs.cache
+F:\core\Gourd\Gouurd.InitQ\obj\Debug\netcoreapp3.1\Gourd.InitQ.AssemblyInfo.cs
+F:\core\Gourd\Gouurd.InitQ\obj\Debug\netcoreapp3.1\Gourd.InitQ.dll
+F:\core\Gourd\Gouurd.InitQ\obj\Debug\netcoreapp3.1\Gourd.InitQ.pdb

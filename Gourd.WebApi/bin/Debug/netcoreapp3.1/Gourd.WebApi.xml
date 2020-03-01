@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Gourd.WebApi</name>
+    </assembly>
+    <members>
+        <member name="M:Gourd.WebApi.Controllers.UserController.CreateUser(Gourd.Application.ViewModel.Market.CreateUserRequest)">
+            <summary>
+            创建用户
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gourd.WebApi.Controllers.UserController.GetUser(System.String)">
+            <summary>
+            查询单个用户
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gourd.WebApi.Controllers.UserController.UpdateUser(Gourd.Application.ViewModel.Market.UpdateUserRequest)">
+            <summary>
+            修改用户
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gourd.WebApi.Controllers.UserController.GetUserList(Gourd.Application.ViewModel.Market.GetUserListRequest)">
+            <summary>
+            获取用户列表
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gourd.WebApi.Controllers.UserController.DelUser(System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            批量删除用户
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Gourd.WebApi.Filters.HiddenApiFilter">
+            <summary>
+            自定义Swagger隐藏过滤器
+            </summary>
+        </member>
+    </members>
+</doc>

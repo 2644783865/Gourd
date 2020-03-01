@@ -1,0 +1,8 @@
+F:\core\Gourd\Gourd.Infrastructure\bin\Debug\netcoreapp3.1\Gourd.Infrastructure.deps.json
+F:\core\Gourd\Gourd.Infrastructure\bin\Debug\netcoreapp3.1\Gourd.Infrastructure.dll
+F:\core\Gourd\Gourd.Infrastructure\bin\Debug\netcoreapp3.1\Gourd.Infrastructure.pdb
+F:\core\Gourd\Gourd.Infrastructure\obj\Debug\netcoreapp3.1\Gourd.Infrastructure.AssemblyInfoInputs.cache
+F:\core\Gourd\Gourd.Infrastructure\obj\Debug\netcoreapp3.1\Gourd.Infrastructure.AssemblyInfo.cs
+F:\core\Gourd\Gourd.Infrastructure\obj\Debug\netcoreapp3.1\Gourd.Infrastructure.dll
+F:\core\Gourd\Gourd.Infrastructure\obj\Debug\netcoreapp3.1\Gourd.Infrastructure.pdb
+F:\core\Gourd\Gourd.Infrastructure\obj\Debug\netcoreapp3.1\Gourd.Infrastructure.csprojAssemblyReference.cache
