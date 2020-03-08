@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using Autofac;
@@ -14,6 +15,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
@@ -94,7 +96,7 @@ namespace Gourd.WebApi
                 .Configure<IISServerOptions>(x => x.AllowSynchronousIO = true);
 
 
-            services.Configure<DBConfig>(this.Configuration.GetSection("Market"));
+            services.Configure<DBConfig>(this.Configuration.GetSection("Default"));
             //Ìí¼Óoptions
             services.AddOptions();
 
@@ -146,6 +148,10 @@ namespace Gourd.WebApi
                 return next(context);
             });
 
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
 
             app.UseStaticFiles();
             app.UseSession();

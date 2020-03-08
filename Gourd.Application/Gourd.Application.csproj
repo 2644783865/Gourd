@@ -10,13 +10,4 @@
     <ProjectReference Include="..\Gourd.Infrastructure\Gourd.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="IService\Channel\" />
-    <Folder Include="IService\Platform\" />
-    <Folder Include="Service\Channel\" />
-    <Folder Include="Service\Platform\" />
-    <Folder Include="ViewModel\Channel\" />
-    <Folder Include="ViewModel\Platform\" />
-  </ItemGroup>
-
 </Project>

@@ -8,9 +8,9 @@ using Autofac.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 using System.Reflection;
-using Gourd.Domain.IRepository.Market;
-using Gourd.DomainCore.Repository.Market;
-using Gourd.Domain.Entity.Market;
+using Gourd.Domain.IRepository.Default;
+using Gourd.DomainCore.Repository.Default;
+using Gourd.Domain.Entity.Default;
 
 namespace Gourd.WebApi.autofac
 {
@@ -47,6 +47,10 @@ namespace Gourd.WebApi.autofac
 
             builder.RegisterAssemblyTypes(Domain, DomainCore)
               .Where(t => t.Name.EndsWith("Facory"))
+              .AsImplementedInterfaces().InstancePerLifetimeScope();
+
+            builder.RegisterAssemblyTypes(Domain, DomainCore)
+              .Where(t => t.Name.EndsWith("EventHandler"))
               .AsImplementedInterfaces().InstancePerLifetimeScope();
 
             //根据名称约定（服务层的接口和实现均以Service结尾），实现服务接口和服务实现的依赖

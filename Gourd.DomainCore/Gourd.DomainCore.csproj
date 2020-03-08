@@ -30,10 +30,6 @@
 
 
   <ItemGroup>
-    <Folder Include="Event\Channel\" />
-    <Folder Include="Event\Platform\" />
-    <Folder Include="Factory\Channel\" />
-    <Folder Include="Factory\Platform\" />
     <Folder Include="Subscribe\" />
   </ItemGroup>
 </Project>

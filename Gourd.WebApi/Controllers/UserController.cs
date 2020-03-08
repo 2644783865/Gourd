@@ -4,12 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Gourd.Application.IService.Market;
-using Gourd.Application.ViewModel.Market;
-using Gourd.Domain.Entity.Market;
-using Gourd.Domain.IEvent.Market;
-using Gourd.Domain.IRepository.Market;
-using Gourd.DomainCore.Repository.Market;
+using Gourd.Application.IService.Default;
+using Gourd.Application.ViewModel.Default;
+using Gourd.Domain.Entity.Default;
+using Gourd.Domain.IRepository.Default;
+using Gourd.DomainCore.Repository.Default;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -51,6 +50,18 @@ namespace Gourd.WebApi.Controllers
         public async Task<JsonResult> GetUser(string id)
         {
             var response = await _userService.GetUser(id);
+            return new JsonResult(response);
+        }
+
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<JsonResult> Login([FromBody] LoginRequest request)
+        {
+            var response = await _userService.Login(request);
             return new JsonResult(response);
         }
 

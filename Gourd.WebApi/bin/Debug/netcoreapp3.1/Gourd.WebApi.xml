@@ -4,7 +4,7 @@
         <name>Gourd.WebApi</name>
     </assembly>
     <members>
-        <member name="M:Gourd.WebApi.Controllers.UserController.CreateUser(Gourd.Application.ViewModel.Market.CreateUserRequest)">
+        <member name="M:Gourd.WebApi.Controllers.UserController.CreateUser(Gourd.Application.ViewModel.Default.CreateUserRequest)">
             <summary>
             创建用户
             </summary>
@@ -18,14 +18,21 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:Gourd.WebApi.Controllers.UserController.UpdateUser(Gourd.Application.ViewModel.Market.UpdateUserRequest)">
+        <member name="M:Gourd.WebApi.Controllers.UserController.Login(Gourd.Application.ViewModel.Default.LoginRequest)">
+            <summary>
+            用户登录
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Gourd.WebApi.Controllers.UserController.UpdateUser(Gourd.Application.ViewModel.Default.UpdateUserRequest)">
             <summary>
             修改用户
             </summary>
             <param name="request"></param>
             <returns></returns>
         </member>
-        <member name="M:Gourd.WebApi.Controllers.UserController.GetUserList(Gourd.Application.ViewModel.Market.GetUserListRequest)">
+        <member name="M:Gourd.WebApi.Controllers.UserController.GetUserList(Gourd.Application.ViewModel.Default.GetUserListRequest)">
             <summary>
             获取用户列表
             </summary>

@@ -8,12 +8,4 @@
     <ProjectReference Include="..\Gourd.Infrastructure\Gourd.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="IEvent\Channel\" />
-    <Folder Include="IEvent\Platform\" />
-    <Folder Include="IFactory\Channel\" />
-    <Folder Include="IFactory\Platform\" />
-    <Folder Include="Model\" />
-  </ItemGroup>
-
 </Project>
