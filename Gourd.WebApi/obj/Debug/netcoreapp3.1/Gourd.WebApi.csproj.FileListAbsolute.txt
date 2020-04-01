@@ -16,9 +16,7 @@ F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\AutoMapper.dll
 F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Castle.Core.dll
 F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Dapper.dll
-F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authorization.dll
 F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
-F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Metadata.dll
 F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
@@ -74,3 +72,13 @@ F:\core\Gourd\Gourd.WebApi\obj\Debug\netcoreapp3.1\Gourd.WebApi.RazorTargetAssem
 F:\core\Gourd\Gourd.WebApi\obj\Debug\netcoreapp3.1\Gourd.WebApi.csproj.CopyComplete
 F:\core\Gourd\Gourd.WebApi\obj\Debug\netcoreapp3.1\Gourd.WebApi.dll
 F:\core\Gourd\Gourd.WebApi\obj\Debug\netcoreapp3.1\Gourd.WebApi.pdb
+F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\IdentityModel.dll
+F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\IdentityModel.AspNetCore.OAuth2Introspection.dll
+F:\core\Gourd\Gourd.WebApi\bin\Debug\netcoreapp3.1\IdentityServer4.AccessTokenValidation.dll

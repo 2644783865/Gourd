@@ -11,6 +11,7 @@ using Gourd.Infrastructure.config;
 using Gourd.WebApi.autofac;
 using Gourd.WebApi.automapper;
 using Gourd.WebApi.Filters;
+using Gourd.WebApi.Model;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,7 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.AspNetCore.Swagger;
+using IdentityServer4.AccessTokenValidation;
 
 namespace Gourd.WebApi
 {
@@ -75,8 +77,7 @@ namespace Gourd.WebApi
                 //设置时间格式
                 options.SerializerSettings.DateFormatString = "yyyy-MM-dd HH:mm:ss";
             });
-
-            services.AddTransient<HttpContextAccessor>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //缓存
             services.AddMemoryCache();
             //配置跨域处理
@@ -108,7 +109,30 @@ namespace Gourd.WebApi
                 options.IdleTimeout = TimeSpan.FromSeconds(30);
             });
             //权限验证
-            services.AddAuthorization();
+
+            var identityServerOptions = new IdentityServerOptions() 
+            {
+                IdentityScheme = "Bearer",
+                ServerIP = "localhost",
+                ServerPort = 5000,
+                ResourceName = "CCC"
+            };
+            
+            Configuration.Bind("IdentityServerOptions", identityServerOptions);
+            services.AddMvcCore().AddAuthorization();
+            services.AddAuthentication(identityServerOptions.IdentityScheme)
+                .AddIdentityServerAuthentication(identityServerOptions.IdentityScheme, options =>
+                {
+                    options.RequireHttpsMetadata = false; //是否启用https
+                    options.Authority = $"http://{identityServerOptions.ServerIP}:{identityServerOptions.ServerPort}";//配置授权认证的地址
+                    options.ApiName = identityServerOptions.ResourceName; //资源名称，跟认证服务中注册的资源列表名称中的apiResource一致
+                    options.SupportedTokens = SupportedTokens.Jwt;
+                    options.ApiSecret = "123456";
+                    
+                    //options.Authentication.Schemes = AuthenticationSchemes.NTLM;
+                }
+                );
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -130,6 +154,11 @@ namespace Gourd.WebApi
                 // include document file
                 option.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{typeof(Startup).Assembly.GetName().Name}.xml"), true);
             });
+
+
+
+
+
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -178,6 +207,8 @@ namespace Gourd.WebApi
 
             app.UseRouting();
 
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

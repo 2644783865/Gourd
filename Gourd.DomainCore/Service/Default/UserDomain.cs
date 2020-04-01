@@ -209,13 +209,5 @@ namespace Gourd.DomainCore.Service.Default
             }
             return response;
         }
-
-        public void Test()
-        {
-            //var @event = new UserEventHandler();
-            //@event.BaseDomainEvent += @event.HandleEvent_UserLogin_AddRecord;
-            //@event.BaseDomainEvent += @event.HandleEvent_UserAccount_Login;
-            //@event.Run(new User());
-        }
     }
 }

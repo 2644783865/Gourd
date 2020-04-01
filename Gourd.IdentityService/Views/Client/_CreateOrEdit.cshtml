@@ -1,0 +1,142 @@
+﻿@model IdentityServer4.Models.Client
+@{
+    ViewData["Title"] = "创建";
+    var strJson = JsonConvert.SerializeObject(Model);
+}
+
+<link href="~/lib/jsoneditor/jsoneditor.css" rel="stylesheet" />
+<script src="~/lib/jsoneditor/jsoneditor.js"></script>
+<form id="form" class="layui-form" action="">
+    @Html.HiddenFor(m => m.ClientId)
+    <div class="layui-col-xs11" style="margin-top:5%">
+        <div class="layui-form-item">
+            <label class="layui-form-label">客户端</label>
+            <div id="jsoneditor" style="height:450px" class="layui-input-block">
+                
+            </div>
+        </div>
+        <div class="layui-form-item layui-hide">
+            <input type="button" lay-submit="" lay-filter="layuiadmin-app-form-submit" id="layuiadmin-app-form-submit" value="确认添加">
+            <input type="button" lay-submit="" lay-filter="layuiadmin-app-form-edit" id="layuiadmin-app-form-edit" value="确认编辑">
+        </div>
+
+    </div>
+</form>
+
+
+<script>
+    // 创建对象
+    var container = document.getElementById("jsoneditor");
+    var options = {
+         modes: ['code'], //可以设置多种模式随意切换
+        //mode: 'view', // tree，view，form，code，text
+        onError: function (err) {
+            alert(err.toString());
+        }
+    };
+    // 实例化对象
+    var editor = new JSONEditor(container, options);
+
+    // JSON数据
+    var json = @Html.Raw(strJson);
+
+    // JSONEditor.set(data) 设置数据
+    editor.set(json);
+    // JSONEditor.get() 和 JSONEditor.getText() 获取数据
+    var json = editor.get();
+    console.log(JSON.stringify(json));
+
+    var text = editor.getText();
+    console.log(text);
+
+    // JSONEditor.setMode(mode) 设置模式
+    //editor.setMode('code');
+</script>
+
+
+<script>
+    layui.use('form', function () {
+        var form = layui.form;
+        //自定义验证规则
+        form.verify({
+
+        });
+        //监听开关
+        form.on('checkbox(dict)', function (data) {
+            var d = $(this).attr("name");
+            var v = $(this).attr("tag");
+            //全选
+            if (d == "allcheck") {
+                //这里实现勾选
+                $('input[tag=' + v + ']').each(function (index, item) {
+                    item.checked = data.elem.checked;
+                    if (data.elem.checked) {
+                        $(item).val('1');
+                    } else {
+                        $(item).val('0');
+                    }
+                });
+                form.render('checkbox');
+            } else {
+                console.log(d)
+                if (data.elem.checked) {
+                    $("#" + d).val('1');
+                } else {
+                    $("#" + d).val('0');
+                }
+            }
+        });
+        //监听提交
+        form.on('submit(layuiadmin-app-form-submit)', function (data) {
+            var field = editor.get(); //获取提交的字段
+            return postForm("/client/create", field, "add");
+        });
+        form.on('submit(layuiadmin-app-form-edit)', function (data) {
+            var field = editor.get();//获取提交的字段
+            return postForm("/client/edit", field, "edit");
+
+        });
+
+        //提取公共提交表单方法
+        function postForm(url, field) {
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            //提交 Ajax 成功后，关闭当前弹层并重载表格
+            var load = layer.load(1, {
+                shade: [0.3, '#808080'] //0.1透明度的白色背景
+            });
+            $.post(url, field, function (data) {
+                layer.close(load);
+                if (data.code == 200) {
+                    parent.layui.table.reload('tableList'); //重载表格
+                    parent.layer.close(index); //再执行关闭
+                    parent.layer.msg("操作成功!", {
+                        time: 1000,
+                        icon: 1,
+                    });
+                } else {
+                    parent.layer.msg("操作失败!", {
+                        time: 1000,
+                        icon: 2,
+                    });
+
+                }
+            });
+        }
+    });
+
+    $('#original').blur(function () {
+        var input;
+        try {
+            if ($('#original').val().length == 0) {
+                return;
+            }
+
+            input = eval('(' + $('#original').val() + ')');
+        } catch (error) {
+            return alert("Input data is not valid JSON, please check. Error: " + error);
+        }
+
+        $('#original').val(JSON.stringify(input, null, 4));
+    });
+</script>
+

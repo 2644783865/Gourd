@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Gourd.Application.IService.Default;
@@ -9,9 +11,11 @@ using Gourd.Application.ViewModel.Default;
 using Gourd.Domain.Entity.Default;
 using Gourd.Domain.IRepository.Default;
 using Gourd.DomainCore.Repository.Default;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace Gourd.WebApi.Controllers
 {
@@ -19,14 +23,16 @@ namespace Gourd.WebApi.Controllers
     [Route("[controller]/[action]")]
     public class UserController : ControllerBase
     {
-      
+
         private readonly ILogger<UserController> _logger;
         private readonly IUserService _userService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserController(ILogger<UserController> logger, IUserService userService)
+        public UserController(IHttpContextAccessor httpContextAccessor, ILogger<UserController> logger, IUserService userService)
         {
             _logger = logger;
             _userService = userService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         /// <summary>
@@ -35,7 +41,7 @@ namespace Gourd.WebApi.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<JsonResult> CreateUser([FromBody ]CreateUserRequest request)
+        public async Task<JsonResult> CreateUser([FromBody]CreateUserRequest request)
         {
             var response = await _userService.CreateUser(request);
             return new JsonResult(response);
@@ -95,14 +101,15 @@ namespace Gourd.WebApi.Controllers
         /// <param name="ids"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<JsonResult> DelUser([FromBody]List<string> ids,string token)
+        public async Task<JsonResult> DelUser([FromBody]List<string> ids, string token)
         {
-            if(token != "tibos666")
+            if (token != "tibos666")
             {
                 return new JsonResult("口令不对,是不允许删除滴!");
             }
             var response = await _userService.DelUser(ids);
             return new JsonResult(response);
         }
+
     }
 }

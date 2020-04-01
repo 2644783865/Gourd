@@ -1,0 +1,10 @@
+﻿@{
+    var list = Model as List<ApiResource>;
+}
+<select id="ApiResourceId" name="ApiResourceId"  lay-search="">
+    <option value="">未选择</option>
+    @foreach (var item in list)
+    {
+        <option value="@item.Id">@item.DisplayName</option>
+    }
+</select>
