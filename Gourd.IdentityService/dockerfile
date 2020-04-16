@@ -1,0 +1,8 @@
+﻿FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends libgdiplus libc6-dev 
+WORKDIR /app
+COPY . .
+EXPOSE 80
+ENTRYPOINT ["dotnet", "Gourd.IdentityService.dll","-b","0.0.0.0"]

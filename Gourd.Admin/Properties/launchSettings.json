@@ -18,7 +18,7 @@
     "Gourd.Admin": {
       "commandName": "Project",
       "launchBrowser": false,
-      "applicationUrl": "http://localhost:5002",
+      "applicationUrl": "http://localhost:5002;https://localhost:5001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

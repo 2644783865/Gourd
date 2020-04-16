@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using IdentityModel;
 using IdentityServer4.AccessTokenValidation;
@@ -59,12 +60,17 @@ namespace Gourd.IdentityService
                 .AddDefaultTokenProviders();
 
 
+            var key = Configuration.GetValue<string>("key");
+
             services.AddIdentityServer(options =>
             {
                 options.Events.RaiseErrorEvents = true;
                 options.Events.RaiseInformationEvents = true;
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
+                options.IssuerUri = "https://ids4.wmowm.com";
+                options.PublicOrigin = "https://ids4.wmowm.com";
+                
                 options.UserInteraction = new UserInteractionOptions()
                 {
                     ConsentReturnUrlParameter = "returnUrl"
@@ -86,6 +92,7 @@ namespace Gourd.IdentityService
                 options.EnableTokenCleanup = true;
             })
             .AddDeveloperSigningCredential()
+            //.AddSigningCredential(new X509Certificate2("key/ids4.wm.crt",key))
             //.AddInMemoryIdentityResources(InMemoryConfiguration.GetIdentityResources())
             //.AddInMemoryApiResources(InMemoryConfiguration.GetApiResources())
             //.AddInMemoryClients(InMemoryConfiguration.GetClients())
@@ -99,10 +106,13 @@ namespace Gourd.IdentityService
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "http://localhost:5000";
+                    //options.Authority = "http://localhost:5000";
+                    options.Authority = "http://localhost";  //容器内部使用80
                     options.RequireHttpsMetadata = false;
                     options.Audience = "webapi";
-                    options.ForwardSignIn = "http://localhost:5000/account/login";
+                    //options.ForwardSignIn = "http://localhost:5000/account/login";
+
+                    options.ForwardSignIn = "http://localhost/account/login"; //容器内部使用80
                 });
 
             services.AddMvc();
