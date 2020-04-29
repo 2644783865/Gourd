@@ -21,16 +21,21 @@ namespace Gourd.Admin.Controllers
             _logger = logger;
         }
 
-        [Authorize]
         public IActionResult Index()
+        {
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult Info()
         {
             var userinfo = from c in User.Claims select new { c.Type, c.Value };
             return View(userinfo);
         }
+
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
-            //return View();
             return SignOut(CookieAuthenticationDefaults.AuthenticationScheme, OpenIdConnectDefaults.AuthenticationScheme);
         }
 

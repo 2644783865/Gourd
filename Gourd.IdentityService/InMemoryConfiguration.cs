@@ -55,8 +55,8 @@ namespace Gourd.IdentityService
                     RequireConsent=false,
                     ClientSecrets = new [] { new Secret("111111".Sha256()) },
                     AllowedGrantTypes = GrantTypes.ImplicitAndClientCredentials,
-                    RedirectUris = { "http://localhost:5002/signin-oidc","https://localhost:5001/signin-oidc" },
-                    PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc","https://localhost:5001/signout-callback-oidc" },
+                    RedirectUris = { "http://localhost:5002/signin-oidc","https://localhost:5001/signin-oidc","https://localhost:5001/home/callback"  },
+                    PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc","https://localhost:5001/signout-callback-oidc","https://localhost:5001/home/web" },
                     AllowedScopes = new List<string>
                     {
                         IdentityServerConstants.StandardScopes.OpenId,

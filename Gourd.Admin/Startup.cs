@@ -104,23 +104,6 @@ namespace Gourd.Admin
                      //options.Scope.Add(OidcConstants.StandardScopes.Profile);//"profile"
                      //options.Scope.Add(OidcConstants.StandardScopes.Email);//"email"
                  });
-
-
-           // services.AddAuthentication(options =>
-           // {
-           //     options.DefaultScheme = "Cookies";
-           //     options.DefaultChallengeScheme = "oidc"; // oidc => open ID connect
-                
-           // })
-           // .AddCookie("Cookies")
-           //.AddOpenIdConnect("oidc", options =>
-           //{
-           //    options.Authority = "https://ids4.wmowm.com";
-           //    options.RequireHttpsMetadata = false;
-           //    options.ClientId = "mvc";
-           //    options.SaveTokens = true;
-           //});
-
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
