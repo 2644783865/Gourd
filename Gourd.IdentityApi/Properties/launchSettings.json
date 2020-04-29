@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": false,
-      "launchUrl": "user/GetIP",
+      "launchUrl": "user/GetUser",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,8 +20,8 @@
     "Gourd.IdentityApi": {
       "commandName": "Project",
       "launchBrowser": false,
-      "launchUrl": "user/GetIP",
-      "applicationUrl": "http://localhost:5001",
+      "launchUrl": "user/GetUser",
+      "applicationUrl": "http://localhost:5003",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

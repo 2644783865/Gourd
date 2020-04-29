@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "前端回调页面";
+}
+<h1>@ViewData["Title"]</h1>
+
+<body>
+    <script src="~/js/oidc-client.js"></script>
+    <script src="~/js/config.js"></script>
+    <script>
+        new Oidc.UserManager({ response_mode: "query" }).signinRedirectCallback().then(function () {
+            window.location = "/home/web";
+        }).catch(function (e) {
+            mgr.signinRedirect();
+            console.error(e);
+        });
+
+    </script>
+</body>

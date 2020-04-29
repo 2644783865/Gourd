@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "模拟前端工程接入IDS4";
+}
+<h1>@ViewData["Title"]</h1>
+
+<body>
+    <button id="login">登录</button>
+    <button id="api">访问API</button>
+    <button id="logout">退出(不会清除其它单点登录的站点凭证)</button>
+
+    <pre id="results"></pre>
+
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/js/oidc-client.js"></script>
+    <script src="~/js/config.js"></script>
+    <script src="~/js/app.js"></script>
+</body>

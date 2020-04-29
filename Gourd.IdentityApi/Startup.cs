@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Gourd.IdentityApi.Model;
 using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,27 +32,40 @@ namespace Gourd.IdentityApi
         {
             services.AddControllers();
             //权限验证
-            var identityServerOptions = new IdentityServerOptions()
-            {
-                IdentityScheme = "Bearer",
-                ServerIP = "localhost",
-                ServerPort = 5000,
-                ResourceName = "CCC"
-            };
-            Configuration.Bind("IdentityServerOptions", identityServerOptions);
-            services.AddMvcCore().AddAuthorization();
-            services.AddAuthentication(identityServerOptions.IdentityScheme)
-                .AddIdentityServerAuthentication(identityServerOptions.IdentityScheme, options =>
-                {
-                    options.RequireHttpsMetadata = false; //是否启用https
-                    options.Authority = $"http://{identityServerOptions.ServerIP}:{identityServerOptions.ServerPort}";//配置授权认证的地址
-                    options.ApiName = identityServerOptions.ResourceName; //资源名称，跟认证服务中注册的资源列表名称中的apiResource一致
-                    options.SupportedTokens = SupportedTokens.Jwt;
-                    options.ApiSecret = "123456";
+            //var identityServerOptions = new IdentityServerOptions()
+            //{
+            //    IdentityScheme = "Bearer",
+            //    ServerPort = 80,
+            //    ResourceName = "CCC"
+            //};
+            //Configuration.Bind("IdentityServerOptions", identityServerOptions);
 
-                    //options.Authentication.Schemes = AuthenticationSchemes.NTLM;
-                }
-                );
+
+            //services.AddMvcCore().AddAuthorization().AddJsonFormatters();
+            services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.RequireHttpsMetadata = false; // for dev env
+                    options.Authority = $"https://ids4.wmowm.com";
+                    options.ApiName ="CCC"; // match with configuration in IdentityServer
+                    options.ApiSecret = "123123";
+                });
+
+
+
+
+
+            //配置跨域处理
+            services.AddCors(options =>
+            {
+                options.AddPolicy("default", builder =>
+                {
+                    builder.AllowAnyMethod()
+                    .SetIsOriginAllowed(_ => true)
+                    .AllowAnyHeader()
+                    .AllowCredentials();
+                });
+            });
 
         }
 
@@ -61,6 +77,7 @@ namespace Gourd.IdentityApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("default");
             app.UseHttpsRedirection();
 
             app.UseRouting();

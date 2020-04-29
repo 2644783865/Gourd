@@ -23,9 +23,11 @@ namespace Gourd.IdentityApi.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<JsonResult> GetIP()
+        public async Task<JsonResult> GetUser()
         {
-            return new JsonResult("访问到资源了");
+            var mm = User.Identity.Name;
+            var userinfo = from c in User.Claims select new { c.Type, c.Value };
+            return new JsonResult(userinfo);
         }
     }
 }

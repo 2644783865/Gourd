@@ -115,6 +115,19 @@ namespace Gourd.IdentityService
                     options.ForwardSignIn = "http://localhost/account/login"; //容器内部使用80
                 });
 
+
+            //配置跨域处理
+            services.AddCors(options =>
+            {
+                options.AddPolicy("default", builder =>
+                {
+                    builder.AllowAnyMethod()
+                    .SetIsOriginAllowed(_ => true)
+                    .AllowAnyHeader()
+                    .AllowCredentials();
+                });
+            });
+
             services.AddMvc();
         }
 
@@ -125,7 +138,7 @@ namespace Gourd.IdentityService
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors("default");
             app.UseSession();
             app.UseStaticFiles();
             app.UseRouting();
